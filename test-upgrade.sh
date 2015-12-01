@@ -6,7 +6,7 @@ node -v
 
 npm install
 
-bower install
+bower --allow-root  install
 
 pm2 start --name test1 server/app.js
 

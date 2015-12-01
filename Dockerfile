@@ -13,7 +13,7 @@ RUN curl -sL https://rpm.nodesource.com/pub/el/NODESOURCE-GPG-SIGNING-KEY-EL > /
 
 RUN rpm --import /etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
 
-RUN yum install -y nodejs gcc g++ make cmake
+RUN yum install -y nodejs gcc g++ make cmake git
 
 COPY app /app
 
