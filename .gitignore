@@ -1,0 +1,16 @@
+node_modules
+.DS_Store
+dist
+test/bower_components/
+test/nightwatch/examples
+test/nightwatch/run.js
+app/bower_components
+.sass-cache
+.tmp
+tmp
+npm-debug.log
+test/nightwatch-0.5.10/bin/tmp/reports
+test/Protractor/tmp
+test/Protractor/SpecResults.html
+.idea
+*.sw*
