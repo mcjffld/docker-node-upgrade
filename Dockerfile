@@ -21,7 +21,7 @@ COPY nodesource-el-4.x.repo /
 
 COPY test-upgrade.sh /
 
-RUN npm install pm2 grunt grunt-cli -g
+RUN npm install pm2 grunt grunt-cli bower -g
 
 CMD ["/bin/bash"]
 
