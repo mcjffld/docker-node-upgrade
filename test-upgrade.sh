@@ -8,6 +8,8 @@ npm install
 
 bower --allow-root  install
 
+grunt build
+
 pm2 start --name test1 server/app.js
 
 sleep 3
