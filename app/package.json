@@ -1,5 +1,5 @@
 {
-  "name": "nodejs",
+  "name": "app",
   "version": "0.0.0",
   "main": "server/app.js",
   "dependencies": {
@@ -31,8 +31,6 @@
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-watch": "~0.6.1",
-    "karma-babel-preprocessor": "^5.2.1",
-    "grunt-babel": "~5.0.0",
     "grunt-google-cdn": "~0.4.0",
     "grunt-newer": "~0.7.0",
     "grunt-ng-annotate": "^0.2.3",
@@ -49,7 +47,6 @@
     "grunt-karma": "~0.8.2",
     "grunt-build-control": "~0.4.0",
     "grunt-mocha-test": "~0.10.2",
-    "grunt-contrib-sass": "^0.7.3",
     "jit-grunt": "^0.5.0",
     "time-grunt": "~0.3.1",
     "grunt-express-server": "~0.4.17",

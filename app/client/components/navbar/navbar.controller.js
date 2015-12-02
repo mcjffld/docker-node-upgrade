@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('nodejsApp')
+angular.module('appApp')
   .controller('NavbarCtrl', function ($scope, $location) {
     $scope.menu = [{
       'title': 'Home',

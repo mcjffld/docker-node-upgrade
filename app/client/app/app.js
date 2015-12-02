@@ -1,15 +1,16 @@
 'use strict';
 
-angular.module('nodejsApp', [
+angular.module('appApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ui.router',
-  'ui.bootstrap'
+  'ngRoute'
 ])
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider
-      .otherwise('/');
+  .config(function ($routeProvider, $locationProvider) {
+    $routeProvider
+      .otherwise({
+        redirectTo: '/'
+      });
 
     $locationProvider.html5Mode(true);
   });

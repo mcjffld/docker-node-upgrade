@@ -1,4 +1,4 @@
-// Generated on 2015-12-01 using generator-angular-fullstack 2.1.1
+// Generated on 2015-12-02 using generator-angular-fullstack 2.1.1
 'use strict';
 
 module.exports = function (grunt) {
@@ -79,23 +79,6 @@ module.exports = function (grunt) {
         ],
         tasks: ['newer:jshint:all', 'karma']
       },
-      injectSass: {
-        files: [
-          '<%= yeoman.client %>/{app,components}/**/*.{scss,sass}'],
-        tasks: ['injector:sass']
-      },
-      sass: {
-        files: [
-          '<%= yeoman.client %>/{app,components}/**/*.{scss,sass}'],
-        tasks: ['sass', 'autoprefixer']
-      },
-      babel: {
-        files: [
-          '<%= yeoman.client %>/{app,components}/**/*.js',
-          '!<%= yeoman.client %>/{app,components}/**/*.spec.js'
-        ],
-        tasks: ['babel']
-      },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -104,7 +87,7 @@ module.exports = function (grunt) {
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.css',
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.html',
           
-          '.tmp/{app,components}/**/*.js',
+          '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
           
           '!{.tmp,<%= yeoman.client %>}{app,components}/**/*.spec.js',
           '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js',
@@ -231,7 +214,7 @@ module.exports = function (grunt) {
       target: {
         src: '<%= yeoman.client %>/index.html',
         ignorePath: '<%= yeoman.client %>/',
-        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/', /bootstrap.css/, /font-awesome.css/ ]
+        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/']
       }
     },
 
@@ -318,7 +301,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       options: {
         // This should be the name of your apps angular module
-        module: 'nodejsApp',
+        module: 'appApp',
         htmlmin: {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,
@@ -412,12 +395,8 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'babel',
-        'sass',
       ],
       test: [
-        'babel',
-        'sass',
       ],
       debug: {
         tasks: [
@@ -429,8 +408,6 @@ module.exports = function (grunt) {
         }
       },
       dist: [
-        'babel',
-        'sass',
         'imagemin',
         'svgmin'
       ]
@@ -474,41 +451,6 @@ module.exports = function (grunt) {
       all: localConfig
     },
 
-    // Compiles ES6 to JavaScript using Babel
-    babel: {
-      options: { 
-        sourceMap: true
-      },
-      server: {
-        files: [{
-          expand: true,
-          cwd: 'client',
-          src: [
-            '{app,components}/**/*.js',
-            '!{app,components}/**/*.spec.js'
-          ],
-          dest: '.tmp'
-        }]
-      }
-    },
-
-    // Compiles Sass to CSS
-    sass: {
-      server: {
-        options: {
-          loadPath: [
-            '<%= yeoman.client %>/bower_components',
-            '<%= yeoman.client %>/app',
-            '<%= yeoman.client %>/components'
-          ],
-          compass: false
-        },
-        files: {
-          '.tmp/app/app.css' : '<%= yeoman.client %>/app/app.scss'
-        }
-      }
-    },
-
     injector: {
       options: {
 
@@ -528,32 +470,13 @@ module.exports = function (grunt) {
           '<%= yeoman.client %>/index.html': [
                [
                  
-                 '.tmp/{app,components}/**/*.js',
+                 '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
                  
                  '!{.tmp,<%= yeoman.client %>}/app/app.js',               
                  '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
                  '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js'               
                ]
             ]
-        }
-      },
-
-      // Inject component scss into app.scss
-      sass: {
-        options: {
-          transform: function(filePath) {
-            filePath = filePath.replace('/client/app/', '');
-            filePath = filePath.replace('/client/components/', '');
-            return '@import \'' + filePath + '\';';
-          },
-          starttag: '// injector',
-          endtag: '// endinjector'
-        },
-        files: {
-          '<%= yeoman.client %>/app/app.scss': [
-            '<%= yeoman.client %>/{app,components}/**/*.{scss,sass}',
-            '!<%= yeoman.client %>/app/app.{scss,sass}'
-          ]
         }
       },
 
@@ -602,7 +525,6 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'clean:server',
         'env:all',
-        'injector:sass', 
         'concurrent:server',
         'injector',
         'wiredep',
@@ -614,7 +536,6 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'env:all',
-      'injector:sass', 
       'concurrent:server',
       'injector',
       'wiredep',
@@ -644,7 +565,6 @@ module.exports = function (grunt) {
       return grunt.task.run([
         'clean:server',
         'env:all',
-        'injector:sass', 
         'concurrent:test',
         'injector',
         'autoprefixer',
@@ -657,7 +577,6 @@ module.exports = function (grunt) {
         'clean:server',
         'env:all',
         'env:test',
-        'injector:sass', 
         'concurrent:test',
         'injector',
         'wiredep',
@@ -675,7 +594,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'injector:sass', 
     'concurrent:dist',
     'injector',
     'wiredep',

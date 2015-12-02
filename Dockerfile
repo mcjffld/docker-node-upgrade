@@ -13,11 +13,13 @@ RUN curl -sL https://rpm.nodesource.com/pub/el/NODESOURCE-GPG-SIGNING-KEY-EL > /
 
 RUN rpm --import /etc/pki/rpm-gpg/NODESOURCE-GPG-SIGNING-KEY-EL
 
-RUN yum install -y nodejs gcc g++ make cmake git
+RUN yum install -y gcc g++ make cmake git
+
+RUN yum install -y nodejs-0.12.6
 
 COPY app /app
 
-COPY nodesource-el-4.x.repo /
+COPY nodesource-el-4.x.repo /etc/yum.repos.d/
 
 COPY test-upgrade.sh /
 
